@@ -1,0 +1,520 @@
+/* Synced with src/data/styles.js — keep tokens aligned with the app */
+
+:root {
+    --bg: #09090b;
+    --text: #ffffff;
+    --muted: #d4d4d8;
+    --grey: #64748b;
+    --green: #34d399;
+    --green-light: #19fb9b;
+    --yellow: #ffd700;
+    --lemon: #f6f600;
+    --border-dark: #334155;
+    --header-border: rgba(255, 255, 255, 0.1);
+    --toolbar-bg: rgba(39, 39, 42, 0.8);
+    --toolbar-border: rgba(52, 211, 153, 0.25);
+    --green-bg: rgba(52, 211, 153, 0.25);
+    --green-border: rgba(52, 211, 153, 0.7);
+}
+
+* { box-sizing: border-box; }
+
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    line-height: 1.5;
+    height: 100dvh;
+    min-height: 100dvh;
+    max-height: 100dvh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    overflow: hidden;
+}
+
+/* ── Top bar (header / title) ── */
+.site-header {
+    background: var(--bg);
+    border-bottom: 1px solid var(--header-border);
+    padding: 14px 20px;
+}
+
+.site-header-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.site-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.site-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: block;
+}
+
+.site-title {
+    color: var(--text);
+    font-size: 16px;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+}
+
+/* gameInfoTabPill + toolbarIconButton */
+.compliance-nav {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.compliance-nav a {
+    color: var(--green);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--toolbar-border);
+    background: var(--green-bg);
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.compliance-nav a:hover,
+.compliance-nav a:focus {
+    color: var(--green-light);
+    background: var(--green-bg);
+    border: 2px solid var(--green-border);
+    padding: 7px 11px;
+    outline: none;
+}
+
+/* ── Layout: header + footer pinned; only main scrolls ── */
+.page {
+    min-height: 0;
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px 20px 24px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--green-border) var(--bg);
+}
+
+.page::-webkit-scrollbar {
+    width: 6px;
+}
+
+.page::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+
+.page::-webkit-scrollbar-thumb {
+    background: var(--green-border);
+    border-radius: 3px;
+}
+
+.page::-webkit-scrollbar-thumb:hover {
+    background: var(--green);
+}
+
+.page::-webkit-scrollbar-thumb:active {
+    background: var(--green-light);
+}
+
+.hero {
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--header-border);
+}
+
+.hero-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.hero-subtitle {
+    color: var(--green);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.hero-icon {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    display: block;
+    /* #34d399 (--green) via CSS — SVG files stay unchanged */
+    filter: brightness(0) saturate(100%) invert(71%) sepia(27%) saturate(1234%) hue-rotate(109deg) brightness(95%) contrast(88%);
+}
+
+/* ── Sections (gameSectionHeader) ── */
+.section {
+    margin-bottom: 8px;
+}
+
+.section-heading {
+    color: var(--green);
+    font-size: 16px;
+    font-weight: 700;
+    padding: 4px 0;
+    border-bottom: 0.5px solid var(--green);
+    margin: 0 0 12px;
+    letter-spacing: 0.2px;
+}
+
+.section-body {
+    margin-bottom: 24px;
+}
+
+/* gameInfoText */
+.info-text {
+    color: var(--text);
+    font-size: 16px;
+    text-align: justify;
+    line-height: 20px;
+    margin: 0 0 12px;
+}
+
+.info-text:last-child { margin-bottom: 0; }
+
+.info-text a {
+    color: var(--green);
+    text-decoration: none;
+}
+
+.info-text a:hover {
+    color: var(--green-light);
+}
+
+.info-text a:active {
+    color: var(--yellow);
+}
+
+/* text16White underline subheadings in gameinfo */
+.subheading {
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: underline;
+    letter-spacing: -0.1px;
+    margin: 0 0 8px;
+}
+
+.info-text.green-italic {
+    color: var(--green);
+    font-weight: 700;
+    font-style: italic;
+    margin-top: 12px;
+}
+
+.formula {
+    text-align: center;
+    margin: 8px 0 12px;
+}
+
+.formula span {
+    color: var(--green);
+    font-weight: 700;
+    font-size: 14px;
+    font-style: italic;
+    letter-spacing: -0.2px;
+}
+
+/* ── Flow steps (gameFlowStepRow / gameFlowStepBadge) ── */
+.flow-step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.flow-step:last-child { margin-bottom: 0; }
+
+.flow-badge {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 18px;
+    background: var(--green-bg);
+    border: 1px solid var(--green-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    color: var(--green);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.flow-label {
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0 0 4px;
+}
+
+.flow-sub {
+    color: var(--text);
+    font-size: 15px;
+    text-align: justify;
+    line-height: 18px;
+    margin: 0;
+}
+
+.flow-sub a {
+    color: var(--green);
+    text-decoration: none;
+}
+
+.flow-sub a:hover {
+    color: var(--green-light);
+}
+
+.flow-sub a:active {
+    color: var(--yellow);
+}
+
+/* ── Tables (textDark border) ── */
+.data-table {
+    border: 1px solid var(--border-dark);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 0 12px;
+}
+
+.data-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+}
+
+.data-table thead th {
+    color: var(--text);
+    font-weight: 700;
+    padding-top: 12px;
+    padding-bottom: 8px;
+}
+
+.data-table tbody td {
+    color: var(--text);
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.data-table .col-tier { width: 25%; padding-left: 16px; text-align: left; }
+.data-table .col-center { text-align: center; width: 25%; }
+.data-table .col-right { text-align: right; width: 30%; }
+.data-table .col-diff { width: 45%; text-align: left; }
+.data-table .col-credits { width: 25%; text-align: left; }
+
+/* ── Item lists (privacy / security) ── */
+.item-list { margin: 0 0 4px; }
+
+.item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 8px 5px;
+    font-size: 16px;
+}
+
+.item-label {
+    display: flex;
+    align-items: center;
+    color: var(--text);
+    font-weight: 700;
+}
+
+.item-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+    flex-shrink: 0;
+    display: block;
+    filter: brightness(0) saturate(100%) invert(71%) sepia(27%) saturate(1234%) hue-rotate(109deg) brightness(95%) contrast(88%);
+}
+
+.item-value { color: var(--text); }
+
+/* gameContactRow — contact table (icon | value) */
+.contact-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 0 4px 2.5px;
+}
+
+.contact-table td {
+    vertical-align: middle;
+    padding: 2.5px 0;
+    font-size: 16px;
+}
+
+.contact-icon-cell {
+    width: 36px;
+    text-align: center;
+    vertical-align: middle;
+    padding-right: 6px;
+}
+
+.contact-text-cell {
+    text-align: left;
+    vertical-align: middle;
+}
+
+.contact-table .item-icon {
+    width: 22px;
+    height: 22px;
+    margin: 0 auto;
+    display: block;
+    filter: brightness(0) invert(1);
+}
+
+.contact-table .item-icon-x {
+    width: 19px;
+    height: 19px;
+}
+
+.contact-table a:link,
+.contact-table a:visited {
+    color: var(--green);
+    text-decoration: none;
+}
+
+.contact-table a:hover {
+    color: var(--green-light);
+}
+
+.contact-table a:active {
+    color: var(--yellow);
+}
+
+.contact-table .item-value {
+    color: var(--green);
+}
+
+/* legacy contact-list selectors kept for any remaining refs */
+.contact-list .item-icon {
+    filter: brightness(0) invert(1);
+}
+
+.contact-list a:link,
+.contact-list a:visited {
+    color: var(--green);
+    text-decoration: none;
+}
+
+.contact-list a:hover {
+    color: var(--green-light);
+}
+
+.contact-list a:active {
+    color: var(--yellow);
+}
+
+.contact-list .item-value {
+    color: var(--green);
+}
+
+/* ── Compliance callout ── */
+.compliance-banner {
+    background: var(--green-bg);
+    border: 1px solid var(--green-border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 28px;
+}
+
+.compliance-banner p {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.compliance-banner a {
+    color: var(--green-light);
+    font-weight: 600;
+}
+
+/* ── Footer ── */
+.site-footer {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px;
+    border-top: 1px solid var(--header-border);
+    text-align: center;
+}
+
+.site-footer p {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 0 0 8px;
+}
+
+.site-footer a {
+    color: var(--green);
+    text-decoration: none;
+    font-weight: 600;
+    margin: 0 8px;
+}
+
+.site-footer a:hover { color: var(--green-light); }
+
+.site-page-footer {
+    background: var(--bg);
+    border-top: 1px solid var(--toolbar-border);
+    padding: 12px 20px;
+}
+
+.site-page-footer-inner {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.site-page-footer .info-text {
+    text-align: right;
+    margin-bottom: 4px;
+}
+
+.site-page-footer .info-text:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 480px) {
+    .site-header-inner { flex-direction: column; align-items: flex-start; }
+    .data-table th, .data-table td { font-size: 13px; padding: 6px 8px; }
+    .item-row { flex-direction: column; align-items: flex-start; gap: 2px; }
+}
